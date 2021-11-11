@@ -44,6 +44,33 @@ public class Ordenamiento {
         return j;
     }
 
+    /**
+     * Método que implemente la lista binaria en un arreglo 
+     * @param array arreglo en el que vamos a buscar
+     * @param elem elemento que vamos a buscar
+     * @param min indice minimo del arreglo en donde vamos a buscar
+     * @param max indice maximo del arreglo en donde vamos a buscar
+     * @return la posicion donde encontramos el elemento y si no lo encontramos -1
+     */
+    public int busquedaBinaria(int array[], int elem, int min, int max){
+        //Si se da este caso no está el elemento en el arreglo
+        if(min > max)
+            return -1;
+        //el elemento medio del subarreglo en donde estamos buscando
+        int mid = min + (max-min)/2;
+        //Si encontramos el elemento regresamos la posicion donde lo encontramos
+        if(array[mid] == elem)
+            return mid;
+        //Ya que asumimos que estamos buscando en un arreglo ordenado podemos saber en cual mitad del arreglo buscar
+        if(elem < array[mid]){
+            //si el elemento que buscamos es menor al medio del subarreglo esta en la primera mitad del subarreglo
+            return busquedaBinaria(array, elem, min, mid-1);
+        }else{
+            //en caso contrario está en la segunda mitad
+            return busquedaBinaria(array, elem, mid+1, max);
+        }
+    }
+
     public static String printArray(int array[]){
         String contenido = "";
         for(int i = 0; i < array.length; i++)
@@ -54,17 +81,8 @@ public class Ordenamiento {
         Ordenamiento ord = new Ordenamiento();
         int arreglo[] = new int[20];
         for(int i = 0; i < 20; i++)
-            arreglo[i] = i+1;
-        ord.swap(arreglo, 0, 4);
-        ord.swap(arreglo, 3, 13);
-        ord.swap(arreglo, 2, 6);
-        ord.swap(arreglo, 15, 19);
-        ord.swap(arreglo, 14, 2);
-        ord.swap(arreglo, 4, 19);
-        ord.swap(arreglo, 3, 7);
-        ord.swap(arreglo, 9, 3);
+            arreglo[i] = i*3+1;
         System.out.println(printArray(arreglo));
-        ord.quickSort(arreglo, 0, 19);
-        System.out.println(printArray(arreglo));
+        System.out.println(ord.busquedaBinaria(arreglo, 2, 0, 20));
     }
 }
