@@ -79,6 +79,7 @@ public class Ordenamiento {
 
 		// La mitad del corte del arreglo
 		int mid = lo + (hi-lo) / 2;
+
 		mergeSort(arr, lo, mid);
 		mergeSort(arr, mid+1, hi);
 
@@ -100,11 +101,11 @@ public class Ordenamiento {
 		int i = 0;
 		int j = ((hi-lo) / 2) + 1;
 		int[] aux = Arrays.copyOfRange(arr, 0, hi+1);
-
+    int index = 0;
 		for(int k = 0; k <= hi; k++){
 			// Si ya nos acabamos los elementos de la primera mitad
 			if(i > mid) {
-        arr[k] = aux[j++];
+        arr[k] = aux[lo + j++];
       }
       // Si ya nos acabamos la segunda mitad
 			else if(j > hi) {
@@ -112,16 +113,14 @@ public class Ordenamiento {
       }
       // El menor está en la primera mitad
 			else if(aux[j] < aux[i]) {
-        arr[k] = aux[j++];
+        arr[k] = aux[lo + j++];
       }
       // El mayor está en la segunda mitad
 			else {
         arr[k] = aux[i++];
       }
+      System.out.print(arr[k] + " ");
 		}
-    for (int m = 0; m < aux.length; m++) {
-      System.out.print(aux[m] + " ");
-    }
     System.out.println();
 	}
 
