@@ -10,12 +10,18 @@ public class Ordenamiento {
    * @param n - posición de uno de los elementos en el arreglo
    */
   public void swap(int array[], int i, int n){
-    // Guardamos el valor para no perderlo
+    // Guardamos el valor en una variable auxiliar para no perderlo
     int aux = array[i];
     array[i] = array[n];
     array[n] = aux;
   }
 
+  /**
+   * Método que ordena un arreglo de forma ascendente con quick sort
+   * @param array[] - arreglo a ordenar
+   * @param lo - índice del primer elemento del arreglo
+   * @param hi - índice del último elemento del arreglo
+   */
   public void quickSort(int array[], int lo, int hi){
     if(hi <= lo)
       return;
@@ -24,6 +30,13 @@ public class Ordenamiento {
     quickSort(array, j+1, hi);
   }
 
+  /**
+   * Método auxiliar de quickSort
+   * @param array[] - arreglo a ordenar
+   * @param lo - índice del primer elemento del arreglo
+   * @param hi - índice del último elemento del arreglo
+   * @return int -
+   */
   public int auxParticion(int array[], int lo, int hi){
     int i = lo;
     int j = hi+1;
@@ -46,7 +59,7 @@ public class Ordenamiento {
   }
 
   /**
-	 * Método que ordena un arreglo de forma ascendente
+	 * Método que ordena un arreglo de forma ascendente con merge sort
 	 * @param arr - el arreglo a ordenar
 	 */
 	public static void mergeSort(int[] arr){
@@ -113,7 +126,7 @@ public class Ordenamiento {
 	}
 
   /**
-   * Método que implemente la lista binaria en un arreglo
+   * Método que implementa la lista binaria en un arreglo
    * @param array - arreglo en el que vamos a buscar
    * @param elem - elemento que vamos a buscar
    * @param min - índice mínimo del arreglo en donde vamos a buscar
@@ -141,6 +154,12 @@ public class Ordenamiento {
     }
   }
 
+
+  /**
+   * Método que imprime el arreglo de manera correcta
+   * @param array[] - el arreglo
+   * @return String - el arreglo con el formato elegido
+   */
   public static String printArray(int array[]){
     String contenido = "";
     for(int i = 0; i < array.length; i++)
