@@ -9,7 +9,7 @@ public class Ordenamiento {
    * @param i - posición de uno de los elementos en el arreglo
    * @param n - posición de uno de los elementos en el arreglo
    */
-  public void swap(int array[], int i, int n){
+  public static void swap(int array[], int i, int n){
     // Guardamos el valor en una variable auxiliar para no perderlo
     int aux = array[i];
     //intercambiamos uno de los valores
@@ -19,12 +19,19 @@ public class Ordenamiento {
   }
 
   /**
+   * Versión del método que sólo recibe como párametro un arreglo
+   * @param array
+   */
+  public static void quickSort(int array[]){
+    quickSort(array, 0, array.length-1);
+  }
+  /**
    * Método que ordena un arreglo de forma ascendente con quick sort
    * @param array[] - arreglo a ordenar
    * @param lo - índice del primer elemento del arreglo
    * @param hi - índice del último elemento del arreglo
    */
-  public void quickSort(int array[], int lo, int hi){
+  public static void quickSort(int array[], int lo, int hi){
     //dado que se cambian las estos valores cada vez que se puede dar este caso
     //si se da este caso ya recorrió todo el arreglo
     if(hi <= lo)
@@ -43,7 +50,7 @@ public class Ordenamiento {
    * @param hi - índice del último elemento del arreglo
    * @return int - regresa el nuevo valor de j
    */
-  public int auxParticion(int array[], int lo, int hi){
+  public static int auxParticion(int array[], int lo, int hi){
     // asignamos el valor de i basandonos en la posicion minima que estamos buscando
     int i = lo;
     // asignamos el valor de j basandonos en la posicion maxima que estamos buscando
@@ -184,13 +191,43 @@ public class Ordenamiento {
 
   public static void main(String[] args) {
     Ordenamiento ord = new Ordenamiento();
-    int arreglo[] = new int[15];
-    for(int i = 0; i < 15; i++)
+    int arreglo[] = new int[10000];
+    long inicio = 0;
+    long fin = 0;
+    for(int i = 0; i < 1500; i++)
       arreglo[i] = i*3+1;
-    int arreglo2[] = {arreglo[2], arreglo[4], arreglo[1], arreglo[3], arreglo[0],arreglo[9], arreglo[2], arreglo[14], arreglo[10], arreglo[8], arreglo[7], arreglo[12], arreglo[11]};
-    //System.out.println(printArray(arreglo));
-    System.out.println(printArray(arreglo2));
-    mergeSort(arreglo2);
-    System.out.println(printArray(arreglo2));
+    for(int i =1500; i < 5000; i++)
+      arreglo[i] = (i*i)-(i+1)*3;
+    for(int i = 5000; i < 10000; i++)
+      arreglo[i] = -i + (40*i) - (i*i);
+    for(int i = 0; i < 3000; i++)
+      arreglo[i*3] = 10*i;
+    int arregloMerge[] = Arrays.copyOf(arreglo, arreglo.length);
+    int arregloQuick[] = Arrays.copyOf(arreglo, arreglo.length);
+    inicio = System.currentTimeMillis();
+    mergeSort(arregloMerge);
+    fin = System.currentTimeMillis();
+    System.out.println("El método Merge Sort tardó: " + (fin-inicio) + " milisegundos con un arreglo de " + arreglo.length + " entradas");
+    inicio = System.currentTimeMillis();
+    quickSort(arregloQuick);
+    fin = System.currentTimeMillis();
+    System.out.println("El método Quick Sort tardó: " + (fin-inicio) + " milisegundos con un arreglo de " + arreglo.length + " entradas");
+
+    int arreglo2[] = new int[40000];
+    for(int i = 0; i <40000; i++)
+      arreglo2[i] = 40000-i;
+    //for(int i = 0; i <400; i++)
+    //  arreglo2[100*i] = i;
+    int arreglo2Merge[] = Arrays.copyOf(arreglo, arreglo.length);
+    int arreglo2Quick[] = Arrays.copyOf(arreglo, arreglo.length);
+    inicio = System.currentTimeMillis();
+    mergeSort(arreglo2Merge);
+    fin = System.currentTimeMillis();
+    System.out.println("El método Merge Sort tardó: " + (fin-inicio) + " milisegundos con un arreglo de " + arreglo2.length + " entradas");
+    inicio = System.currentTimeMillis();
+    quickSort(arreglo2Quick);
+    fin = System.currentTimeMillis();
+    System.out.println("El método Quick Sort tardó: " + (fin-inicio) + " milisegundos con un arreglo de " + arreglo2.length + " entradas");
+      
   }
 }
