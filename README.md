@@ -1,7 +1,6 @@
 # Práctica04 - Algoritmos de Ordenamiento
 Programar y analizar algunos algoritmos de ordenamiento cuadráticos contra algoritmos de ordenamiento logarítmicos.
-Además de programarlos, tener una forma experimental de ver el tiempo en
-que se tarda cada uno de ellos con una misma entrada.
+Además de programarlos, tener una forma experimental de ver el tiempo en que se tarda cada uno de ellos con una misma entrada.
 
 # Instrucciones de intalación, compilación y ejecución
 Se dará por hecho que el usuario sabe moverse en terminal, sabe usar git y ant.
@@ -22,7 +21,7 @@ Se dará por hecho que el usuario sabe moverse en terminal, sabe usar git y ant.
 - Ejecute el comando "ant jar". Esto generará el archivo ejecutable del proyecto (.jar).
 ## Ejecución
 - Asegurece de estar en la ruta "Practica04MalagonMiguelVillafanFernanda/".
-- Ejecute el comando "ant run". Esto hará que se muestre en terminal diferentes arreglos deordenados y el tiempo que tardan los métodos de ordenamiento en ordenarlos.
+- Ejecute el comando "ant run". Esto hará que se muestre en terminal el tiempo que tardan los métodos de ordenamiento en ordenar los arreglos establecidos.
 # Aportaciones de los integrantes
 
 ## María Fernanda Villafán Flores. 318211767
