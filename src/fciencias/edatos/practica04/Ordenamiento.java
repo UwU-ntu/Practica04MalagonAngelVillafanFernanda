@@ -114,14 +114,14 @@ public class Ordenamiento {
 	 * @param hi - el índice del último elemento
 	 */
 	private static void merge(int[] arr, int lo, int mid, int hi){
-		int i = 0;
-		int j = ((hi-lo) / 2) + 1;
+		int i = lo;
+		int j = mid+1;
 		int[] aux = Arrays.copyOfRange(arr, 0, hi+1);
     int index = 0;
-		for(int k = 0; k <= hi; k++){
+		for(int k = lo; k <= hi; k++){
 			// Si ya nos acabamos los elementos de la primera mitad
 			if(i > mid) {
-        arr[k] = aux[lo + j++];
+        arr[k] = aux[j++];
       }
       // Si ya nos acabamos la segunda mitad
 			else if(j > hi) {
@@ -129,15 +129,15 @@ public class Ordenamiento {
       }
       // El menor está en la primera mitad
 			else if(aux[j] < aux[i]) {
-        arr[k] = aux[lo + j++];
+        arr[k] = aux[j++];
       }
       // El mayor está en la segunda mitad
 			else {
         arr[k] = aux[i++];
       }
-      System.out.print(arr[k] + " ");
+      //System.out.print(arr[k] + " ");
 		}
-    System.out.println();
+    //System.out.println();
 	}
 
   /**
@@ -184,12 +184,13 @@ public class Ordenamiento {
 
   public static void main(String[] args) {
     Ordenamiento ord = new Ordenamiento();
-    int arreglo[] = new int[5];
-    for(int i = 0; i < 5; i++)
+    int arreglo[] = new int[15];
+    for(int i = 0; i < 15; i++)
       arreglo[i] = i*3+1;
-    int arreglo2[] = {arreglo[2], arreglo[4], arreglo[1], arreglo[3], arreglo[0]};
-    System.out.println(printArray(arreglo));
+    int arreglo2[] = {arreglo[2], arreglo[4], arreglo[1], arreglo[3], arreglo[0],arreglo[9], arreglo[2], arreglo[14], arreglo[10], arreglo[8], arreglo[7], arreglo[12], arreglo[11]};
+    //System.out.println(printArray(arreglo));
     System.out.println(printArray(arreglo2));
     mergeSort(arreglo2);
+    System.out.println(printArray(arreglo2));
   }
 }
