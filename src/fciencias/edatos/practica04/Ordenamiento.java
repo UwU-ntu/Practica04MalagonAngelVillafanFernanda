@@ -12,7 +12,9 @@ public class Ordenamiento {
   public void swap(int array[], int i, int n){
     // Guardamos el valor en una variable auxiliar para no perderlo
     int aux = array[i];
+    //intercambiamos uno de los valores
     array[i] = array[n];
+    //Y asignamos el auxiliar al otro
     array[n] = aux;
   }
 
@@ -23,10 +25,14 @@ public class Ordenamiento {
    * @param hi - índice del último elemento del arreglo
    */
   public void quickSort(int array[], int lo, int hi){
+    //dado que se cambian las estos valores cada vez que se puede dar este caso
+    //si se da este caso ya recorrió todo el arreglo
     if(hi <= lo)
       return;
     int j = auxParticion(array, lo, hi);
+    //primero vamos a los valores de la derecha
     quickSort(array, lo, j-1);
+    //despues a los valores de la izquierda
     quickSort(array, j+1, hi);
   }
 
@@ -35,25 +41,35 @@ public class Ordenamiento {
    * @param array[] - arreglo a ordenar
    * @param lo - índice del primer elemento del arreglo
    * @param hi - índice del último elemento del arreglo
-   * @return int -
+   * @return int - regresa el nuevo valor de j
    */
   public int auxParticion(int array[], int lo, int hi){
+    // asignamos el valor de i basandonos en la posicion minima que estamos buscando
     int i = lo;
+    // asignamos el valor de j basandonos en la posicion maxima que estamos buscando
     int j = hi+1;
+    //elegimos el pivote en la primera posicion del arreglo que estamos tomando
     int piv = array[lo];
     while(true){
-      while(array[++i] < piv){
-        if(i == hi)
+        //cambiamos las referencias de i basandonos en el pivote
+        while(array[++i] < piv){
+            //Si se da este caso nos salimos del ciclo
+            if(i == hi)
+              break;
+        }
+        //cambiamos las referencias de j basandonos en el pivote
+        while(piv < array[--j]){
+            //Si se da este caso nos salimos del ciclo
+          if(j == lo)
+              break;
+        }
+        //Si el valor minimo que estamos buscando esta en la posicion mayor o igual al valor maximo que estamos buscando nos salimos del ciclo
+        if(i >= j)
           break;
-      }
-      while(piv < array[--j]){
-        if(j == lo)
-            break;
-      }
-      if(i >= j)
-        break;
-      swap(array, i, j);
+        //cambiamos la posicion minima del arreglo y la maxima
+        swap(array, i, j);
     }
+    //Finalmente cambiamos la posicion minima inicial con la ultima maxima
     swap(array, lo, j);
     return j;
   }
