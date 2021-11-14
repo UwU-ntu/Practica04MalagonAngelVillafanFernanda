@@ -70,7 +70,7 @@ public class Ordenamiento {
       // Cambiamos la posición mínima del arreglo y la máxima
       swap(array, i, j);
     }
-    // Finalmente cambiamos la posición mínima inicial con la última máxima
+    // Finalmente, cambiamos la posición mínima inicial con la última máxima
     swap(array, lo, j);
     return j;
   }
@@ -101,10 +101,6 @@ public class Ordenamiento {
 		mergeSort(arr, mid+1, hi);
 
 		merge(arr, lo, mid, hi);
-    for (int m = 0; m < arr.length; m++) {
-      // System.out.print(arr[m] + " ");
-    }
-    // System.out.println();
 	}
 
   /**
@@ -115,9 +111,14 @@ public class Ordenamiento {
 	 * @param hi - el índice del último elemento
 	 */
 	private static void merge(int[] arr, int lo, int mid, int hi){
-		int i = lo;
+    // Estos índices nos ayudarán a ordenar el arreglo desde "lo" hasta "hi"
+    int i = lo;
 		int j = mid+1;
+    // Creamos un arreglo auxiliar con únicamente los elementos que queremos ordenar
+    // del arreglo original
 		int[] aux = Arrays.copyOfRange(arr, 0, hi+1);
+    // Ahora, el ciclo sólo recorre los elementos que se encuentren entre los
+    // índices "lo" y "hi"
 		for(int k = lo; k <= hi; k++){
 			// Si ya nos acabamos los elementos de la primera mitad
 			if(i > mid) {
@@ -135,9 +136,7 @@ public class Ordenamiento {
 			else {
         arr[k] = aux[i++];
       }
-      //System.out.print(arr[k] + " ");
 		}
-    //System.out.println();
 	}
 
   /**
@@ -169,7 +168,6 @@ public class Ordenamiento {
     }
   }
 
-
   /**
    * Método que imprime el arreglo de manera correcta
    * @param array[] - el arreglo
@@ -182,6 +180,10 @@ public class Ordenamiento {
     return contenido;
   }
 
+  /**
+   * Método main donde se realizan las pruebas para ordenar un arreglo con los diferentes
+   * tipos de ordenamineto
+   */
   public static void main(String[] args) {
     Ordenamiento ord = new Ordenamiento();
     int arreglo[] = new int[15];
